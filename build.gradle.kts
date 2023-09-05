@@ -6,6 +6,11 @@ plugins {
 
 javafx {
     modules("javafx.controls", "javafx.fxml")
+
+}
+
+application {
+    mainClass.set("org.example.UI.MainWindow")
 }
 
 group = "org.example"
