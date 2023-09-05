@@ -29,3 +29,10 @@ Ashley =
      - These operations shall be square and square-root.
 6. The system shall have a visible display for the entered numbers and the result of the operation. [HighPriority]
 7. The display shall view the number both in quaternary and in decimal by using a toggle button. [MediumPriority]
+
+## Non-Functional
+1. The system shall be implemented in IntelliJ Idea and JDK >=12.
+2. UI and logic should be separate.
+	- The logic part should be unit-tested!
+4. The system shall have a gitignore file to ignore the temporary files.
+6. One of the team members shall create a repository and add others as collaborators.
