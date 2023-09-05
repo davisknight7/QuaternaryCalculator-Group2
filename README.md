@@ -17,14 +17,14 @@ Evyn = \
 Ashley = 
 
 ## Functional Tasks
-1. The system shall look like a regular calculator. [MediumPriority] 
-2. The system shall only have four buttons for numbers: 0, 1, 2, and 3. 	[HighPriority] 
-3. The system can do operations with two numbers like below. [HighPriority] 
-4. The user shall enter a quaternary number, then press an operation button, 	then enter another number, finally pressing the 'equal' button shall 	display the result of the operation.
-5. These operations shall be addition, subtraction, division, and 	multiplication. 
-6. The system shall work on only integer values. [MediumPriority] 
-7. The system can do operations with one number like below. [LowPriority] 
-8. The user shall enter a quaternary number, then pressing an operation button 	shall display the result of the operation. 
-9. These operations shall be square and square-root. 
-10. The system shall have a visible display for the entered numbers and the result 	of the operation. [HighPriority] 
-11. The display shall view the number both in quaternary and in decimal by 	using a toggle button. [MediumPriority] 
+[] The system shall look like a regular calculator. [MediumPriority] 
+[] The system shall only have four buttons for numbers: 0, 1, 2, and 3. 	[HighPriority] 
+[] The system can do operations with two numbers like below. [HighPriority] 
+[] The user shall enter a quaternary number, then press an operation button, 	then enter another number, finally pressing the 'equal' button shall 	display the result of the operation.
+[] These operations shall be addition, subtraction, division, and 	multiplication. 
+[] The system shall work on only integer values. [MediumPriority] 
+[] The system can do operations with one number like below. [LowPriority] 
+[] The user shall enter a quaternary number, then pressing an operation button 	shall display the result of the operation. 
+[] These operations shall be square and square-root. 
+[] The system shall have a visible display for the entered numbers and the result 	of the operation. [HighPriority] 
+[] The display shall view the number both in quaternary and in decimal by 	using a toggle button. [MediumPriority] 
