@@ -22,10 +22,10 @@ Ashley =
 3. The system can do operations with two numbers like below. [HighPriority] \
      The user shall enter a quaternary number, then press an operation button, then enter another number, finally pressing the 'equal' button shall display the result of the \
      operation. \
-     These operations shall be addition, subtraction, division, and 	multiplication. \
+     These operations shall be addition, subtraction, division, and 	multiplication.
 6. The system shall work on only integer values. [MediumPriority]
 7. The system can do operations with one number like below. [LowPriority] \
      The user shall enter a quaternary number, then pressing an operation button shall display the result of the operation. \
-     These operations shall be square and square-root.\
+     These operations shall be square and square-root.
 10. The system shall have a visible display for the entered numbers and the result of the operation. [HighPriority]
 11. The display shall view the number both in quaternary and in decimal by using a toggle button. [MediumPriority]
