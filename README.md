@@ -12,6 +12,6 @@ Coded: Test cases, convert to decimal, convert to base 4, calculator (addition/s
 Format: name = task completed\
 Davis = \
 Tim = \
-Pandora = \ 
+Pandora = \
 Evyn = \
 Ashley = \
