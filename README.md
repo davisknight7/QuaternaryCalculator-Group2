@@ -17,9 +17,9 @@ Evyn = \
 Ashley = 
 
 ## Functional Tasks
-1. The system shall look like a regular calculator. [MediumPriority] \
-2. The system shall only have four buttons for numbers: 0, 1, 2, and 3. 	[HighPriority] \
-3. The system can do operations with two numbers like below. [HighPriority] \
+1. The system shall look like a regular calculator. [MediumPriority] 
+2. The system shall only have four buttons for numbers: 0, 1, 2, and 3. 	[HighPriority] 
+3. The system can do operations with two numbers like below. [HighPriority] 
 4. The user shall enter a quaternary number, then press an operation button, 	then enter another number, finally pressing the 'equal' button shall 	display the result of the operation.\
 5. These operations shall be addition, subtraction, division, and 	multiplication. \
 6. The system shall work on only integer values. [MediumPriority] \
