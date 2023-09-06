@@ -10,7 +10,6 @@ javafx {
 }
 
 application {
-    version = "17"
     mainClass.set("org.example.UI.MainWindow")
 }
 
