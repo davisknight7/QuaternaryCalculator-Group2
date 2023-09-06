@@ -25,6 +25,7 @@ public class MainWindow extends Application {
     private void setUp(Stage primaryStage) {
         primaryStage.setTitle("Quaternary Calculator");
         primaryStage.setScene(new Scene(createCalculatorView()));
+        primaryStage.show();
         primaryStage.setOnCloseRequest(X -> {
             executor.shutdown();
             primaryStage.close();
