@@ -1,5 +1,6 @@
 package org.example.UI;
 
+
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
@@ -7,7 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -19,12 +20,32 @@ import java.util.concurrent.Executors;
 
 
 public class MainWindow extends Application {
+    private final int WINDOW_WIDTH = 400;
+    private final int LABEL_HEIGHT = 600;
+
+    private final Button[] numberButton = new Button[4];
     private final Button addButton = new Button("+");
     private final Button subtractButton = new Button("-");
     private final Button multiplyButton = new Button("*");
     private final Button divideButton = new Button("/");
+    private final Button computeButton = new Button("=");
 
     private final ExecutorService executor = Executors.newCachedThreadPool();
+
+    @Override
+    public void init() throws Exception {
+        super.init();
+        for(int i = 0; i < 4; i++) {
+            numberButton[i] = new Button(String.valueOf(i));
+            numberButton[i].setPrefSize((double)WINDOW_WIDTH / 3, (double)LABEL_HEIGHT / 3);
+        }
+        addButton.setPrefSize((double)WINDOW_WIDTH / 3, (double)LABEL_HEIGHT / 3);
+        subtractButton.setPrefSize((double)WINDOW_WIDTH / 3, (double)LABEL_HEIGHT / 3);
+        multiplyButton.setPrefSize((double)WINDOW_WIDTH / 3, (double)LABEL_HEIGHT / 3);
+        divideButton.setPrefSize((double)WINDOW_WIDTH / 3, (double)LABEL_HEIGHT / 3);
+        computeButton.setPrefSize((double)WINDOW_WIDTH / 3, (double)LABEL_HEIGHT / 3);
+    }
+
 
     @Override
     public void start(Stage primaryStage) {
@@ -44,36 +65,43 @@ public class MainWindow extends Application {
 
     private Parent createCalculatorView() {
         VBox totalView = new VBox();
-        totalView.setPrefWidth(400);
-        totalView.setPrefHeight(600);
-
+        totalView.setPrefWidth(WINDOW_WIDTH);
+        totalView.setPrefHeight(LABEL_HEIGHT);
         Label label = setupDisplay(totalView);
-        HBox rowOneOperations = setupRowOneOperations(totalView);
-
-        totalView.getChildren().addAll(label, rowOneOperations);
-
+        totalView.getChildren().addAll(
+                label,
+                createDataEntryControl()
+        );
         return totalView;
-    }
-
-    private HBox setupRowOneOperations(VBox totalView) {
-        HBox row = new HBox();
-
-        addButton.setPrefSize(totalView.getPrefWidth()/4, totalView.getPrefHeight()/4);
-        subtractButton.setPrefSize(totalView.getPrefWidth()/4, totalView.getPrefHeight()/4);
-        multiplyButton.setPrefSize(totalView.getPrefWidth()/4, totalView.getPrefHeight()/4);
-        divideButton.setPrefSize(totalView.getPrefWidth()/4, totalView.getPrefHeight()/4);
-        row.getChildren().addAll(addButton, subtractButton, multiplyButton, divideButton);
-
-        return row;
     }
 
     private Label setupDisplay(VBox totalView) {
         Label display = new Label("8");
         display.setPrefWidth(totalView.getPrefWidth());
         display.setPrefHeight(totalView.getPrefHeight()/4);
-
         display.setAlignment(Pos.CENTER_RIGHT);
         display.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 40));
         return display;
+    }
+
+    private Parent createDataEntryControl() {
+        GridPane gridPane = new GridPane();
+        Button[][] layout = {
+                new Button[] {
+                    numberButton[3], numberButton[2], multiplyButton
+                },
+                new Button[] {
+                    numberButton[1], numberButton[0], divideButton
+                },
+                new Button[] {
+                    addButton, subtractButton, computeButton
+                }
+        };
+        for(int j = 0; j < 3; j++) {
+            for(int i = 0; i < 3; i++) {
+                gridPane.add(layout[i][j], j, i);
+            }
+        }
+        return gridPane;
     }
 }
