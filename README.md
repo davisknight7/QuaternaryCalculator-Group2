@@ -5,11 +5,11 @@ Quaternary Calculator Group 2 Repository, Software Engineering Fall 2023
 
 ## Meetings
 Meeting 1: 2:00pm 9/5/23 in person at RB369\
-David Knight, Tim Nicholas, Pandora Roberys, Evyn King, Ashley Vanaman\
+Davis Knight, Tim Nicholas, Pandora Roberts, Evyn King, Ashley Vanaman\
 Coded: Test cases, convert to decimal, convert to base 4, calculator (addition/subtraction/mulitplication/division), start of the UI
 
 Meeting 2: 3:00pm 9/6/23 in person at RB369\
-David Knight, Tim Nicholas, Pandora Roberts, Evyn King, Ashley Vanaman\
+Davis Knight, Tim Nicholas, Pandora Roberts, Evyn King, Ashley Vanaman\
 Coded: Test cases, square and square root functions, UI, functionality of program
 
 ## Task Distribution
