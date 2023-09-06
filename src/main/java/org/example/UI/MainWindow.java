@@ -20,6 +20,9 @@ import java.util.concurrent.Executors;
 
 
 public class MainWindow extends Application {
+    private final int WINDOW_WIDTH = 400;
+    private final int LABEL_HEIGHT = 600;
+
     private final Button[] numberButton = new Button[4];
     private final Button addButton = new Button("+");
     private final Button subtractButton = new Button("-");
@@ -34,8 +37,13 @@ public class MainWindow extends Application {
         super.init();
         for(int i = 0; i < 4; i++) {
             numberButton[i] = new Button(String.valueOf(i));
-            numberButton[i].setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+            numberButton[i].setPrefSize((double)WINDOW_WIDTH / 3, (double)LABEL_HEIGHT / 3);
         }
+        addButton.setPrefSize((double)WINDOW_WIDTH / 3, (double)LABEL_HEIGHT / 3);
+        subtractButton.setPrefSize((double)WINDOW_WIDTH / 3, (double)LABEL_HEIGHT / 3);
+        multiplyButton.setPrefSize((double)WINDOW_WIDTH / 3, (double)LABEL_HEIGHT / 3);
+        divideButton.setPrefSize((double)WINDOW_WIDTH / 3, (double)LABEL_HEIGHT / 3);
+        computeButton.setPrefSize((double)WINDOW_WIDTH / 3, (double)LABEL_HEIGHT / 3);
     }
 
 
@@ -57,8 +65,8 @@ public class MainWindow extends Application {
 
     private Parent createCalculatorView() {
         VBox totalView = new VBox();
-        totalView.setPrefWidth(400);
-        totalView.setPrefHeight(600);
+        totalView.setPrefWidth(WINDOW_WIDTH);
+        totalView.setPrefHeight(LABEL_HEIGHT);
         Label label = setupDisplay(totalView);
         totalView.getChildren().addAll(
                 label,
