@@ -47,6 +47,8 @@ public class MainWindow extends Application {
             int finalI = i;
             numberButton[i].setOnAction(clicked -> fireNumButtonPressed(finalI));
         }
+        addButton.setOnAction(clicked -> fireAddPressed());
+
         addButton.setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
         subtractButton.setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
         multiplyButton.setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
@@ -119,5 +121,17 @@ public class MainWindow extends Application {
     public void fireNumButtonPressed(int number) {
         String output = display.getText() + number;
         display.setText(output);
+    }
+
+    public void fireAddPressed(){
+        if (!checkForOperators()){
+            String output = display.getText() + "+";
+            display.setText(output);
+        }
+
+    }
+
+    private boolean checkForOperators(){
+        return display.getText().contains("+");
     }
 }
