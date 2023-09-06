@@ -33,6 +33,7 @@ public class MainWindow extends Application {
     private final Button clearButton = new Button("C");
     private final Button convertButton = new Button("Convert");
     private final Button computeButton = new Button("=");
+    private final Label display = new Label("");
 
     private final ExecutorService executor = Executors.newCachedThreadPool();
 
@@ -43,6 +44,8 @@ public class MainWindow extends Application {
         for(int i = 0; i < 4; i++) {
             numberButton[i] = new Button(String.valueOf(i));
             numberButton[i].setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
+            int finalI = i;
+            numberButton[i].setOnAction(clicked -> fireNumButtonPressed(finalI));
         }
         addButton.setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
         subtractButton.setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
@@ -84,11 +87,10 @@ public class MainWindow extends Application {
     }
 
     private Label setupDisplay(VBox totalView) {
-        Label display = new Label("8");
         display.setPrefWidth(totalView.getPrefWidth());
         display.setPrefHeight(totalView.getPrefHeight()/4);
         display.setAlignment(Pos.CENTER_RIGHT);
-        display.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 40));
+        display.setFont(Font.font("Comic Sans MS", FontWeight.BOLD, FontPosture.REGULAR, 40));
         return display;
     }
 
@@ -112,5 +114,10 @@ public class MainWindow extends Application {
         }
         gridPane.add(convertButton, 0, 4, 4, 1);
         return gridPane;
+    }
+
+    public void fireNumButtonPressed(int number) {
+        String output = display.getText() + number;
+        display.setText(output);
     }
 }
