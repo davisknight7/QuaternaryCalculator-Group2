@@ -31,7 +31,7 @@ public class TestParser {
     @Test
     void testParseDivision(){
         Parser parser = new Parser();
-        String[] expected = new String[]{"01", "/", "10"};
-        assertArrayEquals(expected, parser.parse("01/10"));
+        String[] expected = new String[]{"1000", "/", "3333"};
+        assertArrayEquals(expected, parser.parse("1000/3333"));
     }
 }
