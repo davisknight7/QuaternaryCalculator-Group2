@@ -36,4 +36,27 @@ public class TestCalculator {
         int y = converter.convertToDecimal("13");
         assertEquals(131, calculator.add(x, y));
     }
+
+    @Test
+    public void testSquare() {
+
+        // Test square of a positive number
+        assertEquals(25, calculator.square(5));
+
+        // Test square of zero
+        assertEquals(0, calculator.square(0));
+
+        // Test square of a negative number
+        assertEquals(25, calculator.square(-5));
+    }
+
+    @Test
+    public void testSquareRoot() {
+        // Test square root of a positive number
+        assertEquals(5.0, calculator.squareRoot(25), 0.001);
+
+        // Test square root of zero
+        assertEquals(0.0, calculator.squareRoot(0), 0.001);
+    }
 }
+
