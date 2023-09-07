@@ -23,20 +23,22 @@ import java.util.concurrent.Executors;
 public class MainWindow extends Application {
     private final int WINDOW_WIDTH = 400;
     private final int LABEL_HEIGHT = 600;
-    private final String[] operations = new String[]{"+", "-", "*", "/", "^", "sqrt"};
+    private final String[] OPERATIONS = new String[]{"+", "-", "*", "/", "^", "sqrt"};
     private final Button[] numberButtons = new Button[4];
-    private final Button addButton = new Button(operations[0]);
-    private final Button subtractButton = new Button(operations[1]);
-    private final Button multiplyButton = new Button(operations[2]);
-    private final Button divideButton = new Button(operations[3]);
-    private final Button squareButton = new Button(operations[4]);
-    private final Button rootButton = new Button(operations[5]);
+    private final Button addButton = new Button(OPERATIONS[0]);
+    private final Button subtractButton = new Button(OPERATIONS[1]);
+    private final Button multiplyButton = new Button(OPERATIONS[2]);
+    private final Button divideButton = new Button(OPERATIONS[3]);
+    private final Button squareButton = new Button(OPERATIONS[4]);
+    private final Button rootButton = new Button(OPERATIONS[5]);
     private final Button clearButton = new Button("C");
     private final Button convertButton = new Button("Convert");
     private final Button computeButton = new Button("=");
     private final Label display = new Label("");
     private final ExecutorService executor = Executors.newCachedThreadPool();
     private final Controller controller = new Controller();
+
+    private boolean isNumberConverted = false;
 
     @Override
     public void init() throws Exception {
@@ -49,7 +51,7 @@ public class MainWindow extends Application {
         multiplyButton.setOnAction(clicked -> fireOperationPressed(multiplyButton.getText()));
         divideButton.setOnAction(clicked -> fireOperationPressed(divideButton.getText()));
         computeButton.setOnAction(clicked -> computePressed());
-        clearButton.setOnAction(clicked -> display.setText(""));
+        clearButton.setOnAction(clicked -> clearPressed());
         convertButton.setOnAction(clicked -> convertPressed());
     }
 
@@ -75,12 +77,17 @@ public class MainWindow extends Application {
     }
 
     public void fireNumButtonPressed(int number) {
-        String output = display.getText() + number;
-        display.setText(output);
+        if(isNumberConverted) {
+            display.setText(String.valueOf(number));
+            isNumberConverted = false;
+        } else {
+            String output = display.getText() + number;
+            display.setText(output);
+        }
     }
 
     public void fireOperationPressed(String operation) {
-        if (operatorInUse()) {
+        if (operatorInUse() || isNumberConverted) {
             return;
         }
         String output = display.getText() + operation;
@@ -88,7 +95,7 @@ public class MainWindow extends Application {
     }
 
     private boolean operatorInUse(){
-        for(String operation: operations) {
+        for(String operation: OPERATIONS) {
             if(display.getText().contains(operation)) {
                 return true;
             }
@@ -101,11 +108,17 @@ public class MainWindow extends Application {
         display.setText(result);
     }
 
+    private void clearPressed() {
+        display.setText("");
+        isNumberConverted = false;
+    }
+
     private void convertPressed() {
         if(operatorInUse()) {
             return;
         }
         display.setText(controller.convert(display.getText()));
+        isNumberConverted = true;
     }
 
     @Override
