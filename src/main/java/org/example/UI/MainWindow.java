@@ -109,7 +109,9 @@ public class MainWindow extends Application {
             String result = controller.compute(display.getText());
             display.setText(result);
         } catch (ArithmeticException e) {
-            display.setText("Cannot divide by zero");
+            ErrorWindow divideByZero = new ErrorWindow ("Cannot divide by zero");
+            divideByZero.display();
+            display.setText("");
         }
     }
 
