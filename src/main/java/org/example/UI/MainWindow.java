@@ -88,7 +88,7 @@ public class MainWindow extends Application {
     }
 
     public void fireOperationPressed(String operation) {
-        if (operatorInUse() || isNumberConverted) {
+        if (operatorInUse() || isNumberConverted || display.getText().isEmpty()) {
             return;
         }
         String output = display.getText() + operation;
