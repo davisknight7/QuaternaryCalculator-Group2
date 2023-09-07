@@ -15,7 +15,12 @@ public class Calculator {
             case "^":
                 return converter.convertToQuaternary((int)Math.pow(first, second));
             case "sqrt":
-                return converter.convertToQuaternary((int)Math.sqrt(first));
+                double num = Math.sqrt(first);
+                if (num % 1 == 0) {
+                    return converter.convertToQuaternary((int)Math.sqrt(first));
+                }
+
+                return "No sqrt";
             default:
                 return "";
         }

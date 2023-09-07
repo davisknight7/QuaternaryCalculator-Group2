@@ -53,5 +53,12 @@ public class TestCalculator {
         assertEquals("11", calculator.calculate(25, 1, "sqrt"));
 
     }
+    @Test
+    public void testInvalidSquareRoot() {
+        // Test square root of an invalid number
+        assertEquals("No sqrt", calculator.calculate(24, 1, "sqrt"));
+
+    }
+
 }
 
