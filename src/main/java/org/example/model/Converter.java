@@ -4,6 +4,9 @@ import static java.lang.Integer.parseInt;
 
 public class Converter {
     public String convertToQuaternary(int decimalValue) {
+        if (decimalValue == 0) {
+            return "0";
+        }
         int remainder;
         StringBuilder convertedNumber = new StringBuilder();
         while (decimalValue > 0) {
