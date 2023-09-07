@@ -39,6 +39,15 @@ public class TestController {
     }
 
     @Test
+    void testCompute_divideByZeroCase() {
+
+
+        Assertions.assertThrows(ArithmeticException.class, ()->controller.compute("01/0"));
+
+    }
+
+
+    @Test
     void testCompute_powerCaseOne() {
         Assertions.assertEquals("10", controller.compute("2^2"));
     }

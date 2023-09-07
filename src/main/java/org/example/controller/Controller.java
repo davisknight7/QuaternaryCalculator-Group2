@@ -6,7 +6,8 @@ import org.example.model.Parser;
 public class Controller {
     private final Converter converter = new Converter();
 
-    public String compute(String input) {
+    public String compute(String input) throws ArithmeticException {
+
         Parser parser = new Parser();
         String[] equation = parser.parse(input);
         return computeAnswer(equation);

@@ -105,8 +105,12 @@ public class MainWindow extends Application {
     }
 
     private void computePressed() {
-        String result = controller.compute(display.getText());
-        display.setText(result);
+        try {
+            String result = controller.compute(display.getText());
+            display.setText(result);
+        } catch (ArithmeticException e) {
+            display.setText("Cannot divide by zero");
+        }
     }
 
     private void clearPressed() {
