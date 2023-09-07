@@ -12,6 +12,10 @@ Meeting 2: 3:00pm 9/6/23 in person at RB369\
 Davis Knight, Tim Nicholas, Pandora Roberts, Evyn King, Ashley Vanaman\
 Coded: Test cases, square and square root functions, UI, functionality of program
 
+Meeting 3: 2:00pm 9/7/23 in person at RB369\
+Davis Knight, Tim Nicholas, Pandora Roberts, Evyn King, Ashley Vanaman\
+Coded: Square root and Square functions and tests, clean code and compile, add Square and square root to controller class
+
 ## Task Distribution
 Format: name = task completed\
 Davis = \
