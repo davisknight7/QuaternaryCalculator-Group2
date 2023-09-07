@@ -4,6 +4,8 @@ import org.example.model.Calculator;
 import org.example.model.Converter;
 import org.example.model.Parser;
 
+import static java.lang.Integer.parseInt;
+
 public class Controller {
     private final Converter converter = new Converter();
 
@@ -18,5 +20,9 @@ public class Controller {
 
     public String convert(String number) {
         return String.valueOf(converter.convertToDecimal(number));
+    }
+
+    public String convertBack(String number){
+        return String.valueOf(converter.convertToQuaternary(parseInt(number)));
     }
 }

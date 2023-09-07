@@ -131,6 +131,11 @@ public class MainWindow extends Application {
         if(operatorInUse()) {
             return;
         }
+        if(isNumberConverted){
+            display.setText(controller.convertBack(display.getText()));
+            isNumberConverted = false;
+            return;
+        }
         display.setText(controller.convert(display.getText()));
         isNumberConverted = true;
     }
