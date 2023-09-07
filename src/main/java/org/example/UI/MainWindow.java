@@ -23,13 +23,14 @@ import java.util.concurrent.Executors;
 public class MainWindow extends Application {
     private final int WINDOW_WIDTH = 400;
     private final int LABEL_HEIGHT = 600;
+    private final String[] operations = new String[]{"+", "-", "*", "/", "^", "sqrt"};
     private final Button[] numberButtons = new Button[4];
-    private final Button addButton = new Button("+");
-    private final Button subtractButton = new Button("-");
-    private final Button multiplyButton = new Button("*");
-    private final Button divideButton = new Button("/");
-    private final Button squareButton = new Button("^");
-    private final Button rootButton = new Button("sqrt");
+    private final Button addButton = new Button(operations[0]);
+    private final Button subtractButton = new Button(operations[1]);
+    private final Button multiplyButton = new Button(operations[2]);
+    private final Button divideButton = new Button(operations[3]);
+    private final Button squareButton = new Button(operations[4]);
+    private final Button rootButton = new Button(operations[5]);
     private final Button clearButton = new Button("C");
     private final Button convertButton = new Button("Convert");
     private final Button computeButton = new Button("=");
@@ -43,8 +44,59 @@ public class MainWindow extends Application {
         int numOfButtonsPerRow = 4;
         setupOperatorButtons(numOfButtonsPerRow);
         setupNumberButtons(numOfButtonsPerRow);
-        addButton.setOnAction(clicked -> fireAddPressed());
+        addButton.setOnAction(clicked -> fireOperationPressed(addButton.getText()));
+        subtractButton.setOnAction(clicked -> fireOperationPressed(subtractButton.getText()));
+        multiplyButton.setOnAction(clicked -> fireOperationPressed(multiplyButton.getText()));
+        divideButton.setOnAction(clicked -> fireOperationPressed(divideButton.getText()));
         computeButton.setOnAction(clicked -> computePressed());
+    }
+
+    private void setupOperatorButtons(int numOfButtonsPerRow) {
+        addButton.setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
+        subtractButton.setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
+        multiplyButton.setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
+        divideButton.setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
+        computeButton.setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
+        squareButton.setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
+        rootButton.setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
+        clearButton.setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
+        convertButton.setPrefSize(WINDOW_WIDTH, (double)LABEL_HEIGHT / numOfButtonsPerRow);
+    }
+
+    private void setupNumberButtons(int numOfButtonsPerRow) {
+        for(int i = 0; i < 4; i++) {
+            numberButtons[i] = new Button(String.valueOf(i));
+            numberButtons[i].setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
+            int finalI = i;
+            numberButtons[i].setOnAction(clicked -> fireNumButtonPressed(finalI));
+        }
+    }
+
+    public void fireNumButtonPressed(int number) {
+        String output = display.getText() + number;
+        display.setText(output);
+    }
+
+    public void fireOperationPressed(String operation) {
+        if (operatorInUse()) {
+            return;
+        }
+        String output = display.getText() + operation;
+        display.setText(output);
+    }
+
+    private boolean operatorInUse(){
+        for(String operation: operations) {
+            if(display.getText().contains(operation)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void computePressed() {
+        String result = controller.compute(display.getText());
+        display.setText(result);
     }
 
     @Override
@@ -103,47 +155,5 @@ public class MainWindow extends Application {
         }
         gridPane.add(convertButton, 0, 4, 4, 1);
         return gridPane;
-    }
-
-    public void fireNumButtonPressed(int number) {
-        String output = display.getText() + number;
-        display.setText(output);
-    }
-
-    public void fireAddPressed(){
-        if (!checkForOperators()) {
-            String output = display.getText() + "+";
-            display.setText(output);
-        }
-    }
-
-    private boolean checkForOperators(){
-        return display.getText().contains("+");
-    }
-
-    private void computePressed() {
-        String result = controller.compute(display.getText());
-        display.setText(result);
-    }
-
-    private void setupOperatorButtons(int numOfButtonsPerRow) {
-        addButton.setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
-        subtractButton.setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
-        multiplyButton.setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
-        divideButton.setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
-        computeButton.setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
-        squareButton.setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
-        rootButton.setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
-        clearButton.setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
-        convertButton.setPrefSize(WINDOW_WIDTH, (double)LABEL_HEIGHT / numOfButtonsPerRow);
-    }
-
-    private void setupNumberButtons(int numOfButtonsPerRow) {
-        for(int i = 0; i < 4; i++) {
-            numberButtons[i] = new Button(String.valueOf(i));
-            numberButtons[i].setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
-            int finalI = i;
-            numberButtons[i].setOnAction(clicked -> fireNumButtonPressed(finalI));
-        }
     }
 }
