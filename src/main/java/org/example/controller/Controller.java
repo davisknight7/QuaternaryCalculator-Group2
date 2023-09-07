@@ -24,6 +24,8 @@ public class Controller {
                 return converter.convertToQuaternary(first * second);
             case "/":
                 return converter.convertToQuaternary(first / second);
+            case "^":
+                return converter.convertToQuaternary((int)Math.pow(first, second));
             default:
                 return "";
         }

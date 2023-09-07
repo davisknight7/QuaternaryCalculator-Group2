@@ -37,4 +37,14 @@ public class TestController {
     void testCompute_divideCase() {
         Assertions.assertEquals("10", controller.compute("30/3"));
     }
+
+    @Test
+    void testCompute_powerCaseOne() {
+        Assertions.assertEquals("10", controller.compute("2^2"));
+    }
+
+    @Test
+    void testCompute_powerCaseTwo() {
+        Assertions.assertEquals("3210301", controller.compute("23^10"));
+    }
 }

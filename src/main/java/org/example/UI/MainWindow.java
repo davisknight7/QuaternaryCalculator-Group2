@@ -29,8 +29,8 @@ public class MainWindow extends Application {
     private final Button subtractButton = new Button(OPERATIONS[1]);
     private final Button multiplyButton = new Button(OPERATIONS[2]);
     private final Button divideButton = new Button(OPERATIONS[3]);
-    private final Button squareButton = new Button(OPERATIONS[4]);
-    private final Button rootButton = new Button(OPERATIONS[5]);
+    private final Button powerButton = new Button(OPERATIONS[4]);
+    private final Button squareRootButton = new Button(OPERATIONS[5]);
     private final Button clearButton = new Button("C");
     private final Button convertButton = new Button("Convert");
     private final Button computeButton = new Button("=");
@@ -50,6 +50,7 @@ public class MainWindow extends Application {
         subtractButton.setOnAction(clicked -> fireOperationPressed(subtractButton.getText()));
         multiplyButton.setOnAction(clicked -> fireOperationPressed(multiplyButton.getText()));
         divideButton.setOnAction(clicked -> fireOperationPressed(divideButton.getText()));
+        powerButton.setOnAction(clicked -> fireOperationPressed(powerButton.getText()));
         computeButton.setOnAction(clicked -> computePressed());
         clearButton.setOnAction(clicked -> clearPressed());
         convertButton.setOnAction(clicked -> convertPressed());
@@ -61,8 +62,8 @@ public class MainWindow extends Application {
         multiplyButton.setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
         divideButton.setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
         computeButton.setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
-        squareButton.setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
-        rootButton.setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
+        powerButton.setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
+        squareRootButton.setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
         clearButton.setPrefSize((double)WINDOW_WIDTH / numOfButtonsPerRow, (double)LABEL_HEIGHT / numOfButtonsPerRow);
         convertButton.setPrefSize(WINDOW_WIDTH, (double)LABEL_HEIGHT / numOfButtonsPerRow);
     }
@@ -161,10 +162,10 @@ public class MainWindow extends Application {
         GridPane gridPane = new GridPane();
         Button[][] layout = {
                 new Button[] {
-                    numberButtons[3], numberButtons[2], multiplyButton, squareButton
+                    numberButtons[3], numberButtons[2], multiplyButton, powerButton
                 },
                 new Button[] {
-                    numberButtons[1], numberButtons[0], divideButton, rootButton
+                    numberButtons[1], numberButtons[0], divideButton, squareRootButton
                 },
                 new Button[] {
                     addButton, subtractButton, computeButton, clearButton
