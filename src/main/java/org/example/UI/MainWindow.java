@@ -23,7 +23,7 @@ import java.util.concurrent.Executors;
 public class MainWindow extends Application {
     private final int WINDOW_WIDTH = 400;
     private final int LABEL_HEIGHT = 600;
-    private final String[] OPERATIONS = new String[]{"+", "-", "*", "/", "^", "sqrt"};
+    private final String[] OPERATIONS = new String[]{"+", "-", "*", "/", "^", "\u221A"};
     private final Button[] numberButtons = new Button[4];
     private final Button addButton = new Button(OPERATIONS[0]);
     private final Button subtractButton = new Button(OPERATIONS[1]);
@@ -54,6 +54,7 @@ public class MainWindow extends Application {
         computeButton.setOnAction(clicked -> computePressed());
         clearButton.setOnAction(clicked -> clearPressed());
         convertButton.setOnAction(clicked -> convertPressed());
+        squareRootButton.setOnAction(clicked -> computeSqrtPressed());
     }
 
     private void setupOperatorButtons(int numOfButtonsPerRow) {
@@ -85,6 +86,12 @@ public class MainWindow extends Application {
             String output = display.getText() + number;
             display.setText(output);
         }
+    }
+
+    public void computeSqrtPressed() {
+        String output = display.getText() + "\u221A";
+        display.setText(output);
+        computePressed();
     }
 
     public void fireOperationPressed(String operation) {

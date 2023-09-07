@@ -4,7 +4,7 @@ package org.example.model;
 import java.util.List;
 
 public class Parser {
-    private final List<String> operators = List.of("+", "-", "/", "*", "^");
+    private final List<String> operators = List.of("+", "-", "/", "*", "^", "\u221A");
 
     public String[] parse(String operation) {
         String[] parsedValues = new String[3];
