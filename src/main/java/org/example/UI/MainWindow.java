@@ -49,6 +49,8 @@ public class MainWindow extends Application {
         multiplyButton.setOnAction(clicked -> fireOperationPressed(multiplyButton.getText()));
         divideButton.setOnAction(clicked -> fireOperationPressed(divideButton.getText()));
         computeButton.setOnAction(clicked -> computePressed());
+        clearButton.setOnAction(clicked -> display.setText(""));
+        convertButton.setOnAction(clicked -> convertPressed());
     }
 
     private void setupOperatorButtons(int numOfButtonsPerRow) {
@@ -97,6 +99,13 @@ public class MainWindow extends Application {
     private void computePressed() {
         String result = controller.compute(display.getText());
         display.setText(result);
+    }
+
+    private void convertPressed() {
+        if(operatorInUse()) {
+            return;
+        }
+        display.setText(controller.convert(display.getText()));
     }
 
     @Override

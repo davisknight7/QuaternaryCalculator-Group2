@@ -4,6 +4,8 @@ import org.example.model.Converter;
 import org.example.model.Parser;
 
 public class Controller {
+    private final Converter converter = new Converter();
+
     public String compute(String input) {
         Parser parser = new Parser();
         String[] equation = parser.parse(input);
@@ -11,7 +13,6 @@ public class Controller {
     }
 
     private String computeAnswer(String[] equation) {
-        Converter converter = new Converter();
         int first = converter.convertToDecimal(equation[0]);
         int second = converter.convertToDecimal(equation[2]);
         switch(equation[1]) {
@@ -26,5 +27,9 @@ public class Controller {
             default:
                 return "";
         }
+    }
+
+    public String convert(String number) {
+        return String.valueOf(converter.convertToDecimal(number));
     }
 }
