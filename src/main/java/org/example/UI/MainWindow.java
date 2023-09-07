@@ -1,5 +1,6 @@
 package org.example.UI;
 
+import org.example.controller.Controller;
 
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -34,6 +35,7 @@ public class MainWindow extends Application {
     private final Button computeButton = new Button("=");
     private final Label display = new Label("");
     private final ExecutorService executor = Executors.newCachedThreadPool();
+    private final Controller controller = new Controller();
 
     @Override
     public void init() throws Exception {
@@ -41,9 +43,8 @@ public class MainWindow extends Application {
         int numOfButtonsPerRow = 4;
         setupOperatorButtons(numOfButtonsPerRow);
         setupNumberButtons(numOfButtonsPerRow);
-
         addButton.setOnAction(clicked -> fireAddPressed());
-
+        computeButton.setOnAction(clicked -> computePressed());
     }
 
     @Override
@@ -110,15 +111,19 @@ public class MainWindow extends Application {
     }
 
     public void fireAddPressed(){
-        if (!checkForOperators()){
+        if (!checkForOperators()) {
             String output = display.getText() + "+";
             display.setText(output);
         }
-
     }
 
     private boolean checkForOperators(){
         return display.getText().contains("+");
+    }
+
+    private void computePressed() {
+        String result = controller.compute(display.getText());
+        display.setText(result);
     }
 
     private void setupOperatorButtons(int numOfButtonsPerRow) {

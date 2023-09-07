@@ -17,4 +17,24 @@ public class TestController {
     void testCompute_addCaseTwo() {
         Assertions.assertEquals("300", controller.compute("133+101"));
     }
+
+    @Test
+    void testCompute_subtractCaseOne() {
+        Assertions.assertEquals("2", controller.compute("11-3"));
+    }
+
+    @Test
+    void testCompute_subtractCaseTwo() {
+        Assertions.assertEquals("11", controller.compute("113-102"));
+    }
+
+    @Test
+    void testCompute_multiplyCase() {
+        Assertions.assertEquals("32", controller.compute("13*2"));
+    }
+
+    @Test
+    void testCompute_divideCase() {
+        Assertions.assertEquals("10", controller.compute("30/3"));
+    }
 }
