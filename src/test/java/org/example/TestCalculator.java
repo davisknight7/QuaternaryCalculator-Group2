@@ -46,13 +46,12 @@ public class TestCalculator {
     public void testSquareZero() {
         assertEquals("0", calculator.calculate(0, 2, "^"));
     }
-//    @Test
-//    public void testSquareRoot() {
-//        // Test square root of a positive number
-//        assertEquals(5.0, calculator.squareRoot(25), 0.001);
-//
-//        // Test square root of zero
-//        assertEquals(0.0, calculator.squareRoot(0), 0.001);
-//    }
+
+    @Test
+    public void testSquareRoot() {
+        // Test square root of a positive number
+        assertEquals("11", calculator.calculate(25, 1, "sqrt"));
+
+    }
 }
 

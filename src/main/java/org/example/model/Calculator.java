@@ -14,6 +14,8 @@ public class Calculator {
                 return converter.convertToQuaternary(first / second);
             case "^":
                 return converter.convertToQuaternary((int)Math.pow(first, second));
+            case "sqrt":
+                return converter.convertToQuaternary((int)Math.sqrt(first));
             default:
                 return "";
         }
