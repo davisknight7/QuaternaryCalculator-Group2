@@ -3,6 +3,9 @@ Quaternary Calculator Group 2 Repository, Software Engineering Fall 2023
 
 ## Manual
 To run the program open it as an IntelliJ project via version control from the GitHub Repo. At the very top right of IntelliJ click Gradle. Go to the tasks folder, then the application, click run. The calculator will open.You can input only in quaternary, but decimal can be seen by pressing convert. Operations can be done either by inputting one value, pressing the operator button, entering another value, and then pressing the equals sign, or for square root, only one value is needed. Enter a value, press the square root button, it will automatically provide a result. If there is no square root, the program will display "No Sqrt".
+![alt text](screenshots/Doing math on Calculator.png)
+![alt text](screenshots/Answer to math.png)
+![alt text](screenshots/Quaternary converted to Decimal.png)
 
 ## Dependencies
 
